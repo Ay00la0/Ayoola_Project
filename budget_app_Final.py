@@ -1,4 +1,6 @@
-pip install openpyxl
+# %pip install openpyxl
+# %pip install streamlit
+# %pip install plotly
 
 # File: expense_tracker.py
 import streamlit as st
