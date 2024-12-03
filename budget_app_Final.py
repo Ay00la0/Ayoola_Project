@@ -16,7 +16,7 @@ def load_categories():
     try:
         return pd.read_excel(CATEGORY_FILE)['Category'].tolist()
     except FileNotFoundError:
-        return ['Food', 'Housing', 'Transportation', 'Utilities', 'Entertainment', 'Healthcare', 'Other']
+        return ['Food', 'Housing', 'Transportation', 'Utilities', 'Personal Care', 'Education', 'Savings and Investments', 'Entertainment', 'Healthcare', 'Other']
 
 def save_categories(categories):
     pd.DataFrame({'Category': categories}).to_excel(CATEGORY_FILE, index=False)
