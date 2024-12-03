@@ -1,6 +1,4 @@
 # File: expense_tracker.py
-%pip install streamlit
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
