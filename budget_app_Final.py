@@ -1,4 +1,4 @@
-pip install plotly
+!pip install plotly
 
 # File: expense_tracker.py
 import streamlit as st
