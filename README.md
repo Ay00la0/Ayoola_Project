@@ -31,7 +31,7 @@ Data stored in Excel Files (Not suitable for high-volume dtata processing)
 **FUTURE PLANS**
 1. Saetting limit ofr easch category by Month or Year
 2. Store large data in cloud datatbase
-3. *** Trying to add the expenses summary and filtering and export CSV from budget_CH.py to the final py ***
+3. ***Trying to add the expenses summary and filtering and export CSV from budget_CH.py to the final py***
 
 **FOR DEVELOPERS**
 Code Base - budget_CH_Final.py and expenses.xlsx
