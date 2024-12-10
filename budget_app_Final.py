@@ -96,3 +96,20 @@ if not df.empty:
     st.dataframe(df)
 else:
     st.info("No expenses logged yet. Use the sidebar to add your first expense!")
+
+# Expense summary metrics
+    st.subheader('Expense Summary')
+    total_spent = filtered_df['Amount'].sum()
+    avg_daily = total_spent / len(filtered_df['Date'].unique()) if len(filtered_df['Date'].unique()) > 0 else 0
+    highest_expense = filtered_df['Amount'].max() if not filtered_df.empty else 0
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric('Total Spent', f'${total_spent:.2f}')
+    col2.metric('Average Daily Spend', f'${avg_daily:.2f}')
+    col3.metric('Highest Single Expense', f'${highest_expense:.2f}')
+
+    # Option to download filtered data
+    csv = filtered_df.to_csv(index=False).encode('utf-8')
+    st.download_button('Download Filtered Data as CSV', data=csv, file_name='filtered_expenses.csv', mime='text/csv')
+else:
+    st.info('No expenses logged yet. Use the sidebar to add your first expense!')
