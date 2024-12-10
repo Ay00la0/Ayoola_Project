@@ -39,3 +39,7 @@ Code Base - budget_CH_Final.py and expenses.xlsx
 Extending the Project - Integrate with Financial APIs for automation and better Vizualization of datas in grapoh (Colour)
 
 
+![image](https://github.com/user-attachments/assets/be257aa4-a061-4d64-a8ac-a993cade1eaf)
+
+
+
