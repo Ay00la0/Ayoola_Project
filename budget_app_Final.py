@@ -95,8 +95,7 @@ if not df.empty:
     # Recent expenses table
     st.subheader("Recent Expenses")
     st.dataframe(df)
-    # Expense summary metrics
-    st.subheader('Expense Summary')
+ 
 
 else:
     st.info("No expenses logged yet. Use the sidebar to add your first expense!")
