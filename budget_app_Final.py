@@ -90,13 +90,6 @@ if not df.empty:
     category_total = df.groupby('Category')['Amount'].sum()
     fig = px.bar(category_total, x=category_total.index, y=category_total.values, title="Expenses by Category")
     st.plotly_chart(fig)
-
-    # Recent expenses table
-    st.subheader("Recent Expenses")
-    st.dataframe(df)
-else:
-    st.info("No expenses logged yet. Use the sidebar to add your first expense!")
-
 # Expense summary metrics
     st.subheader('Expense Summary')
     total_spent = filtered_df['Amount'].sum()
@@ -111,5 +104,11 @@ else:
     # Option to download filtered data
     csv = filtered_df.to_csv(index=False).encode('utf-8')
     st.download_button('Download Filtered Data as CSV', data=csv, file_name='filtered_expenses.csv', mime='text/csv')
+    
+    # Recent expenses table
+    st.subheader("Recent Expenses")
+    st.dataframe(df)
+    
 else:
-    st.info('No expenses logged yet. Use the sidebar to add your first expense!')
+    st.info("No expenses logged yet. Use the sidebar to add your first expense!")
+
