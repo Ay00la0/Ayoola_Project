@@ -80,6 +80,20 @@ with st.sidebar:
         save_data(df)
         st.success(f'Expense logged: ${amount:.2f} in {category} on {date}')
 
+if not filtered_df.empty:
+    total_spent = filtered_df['Amount'].sum()
+    avg_daily = total_spent / len(filtered_df['Date'].unique()) if len(filtered_df['Date'].unique()) > 0 else 0
+    highest_expense = filtered_df['Amount'].max()
+
+    col1, col2, col3 = st.columns(3)
+    col1.metric('Total Spent', f'${total_spent:.2f}')
+    col2.metric('Average Daily Spend', f'${avg_daily:.2f}')
+    col3.metric('Highest Single Expense', f'${highest_expense:.2f}')
+
+else:
+    st.info("No data available for metrics.")
+    
+
 # Main content: Show and analyze expenses
 if not df.empty:
     # Display charts and summary
@@ -100,18 +114,6 @@ if not df.empty:
 else:
     st.info("No expenses logged yet. Use the sidebar to add your first expense!")
 
-if not filtered_df.empty:
-    total_spent = filtered_df['Amount'].sum()
-    avg_daily = total_spent / len(filtered_df['Date'].unique()) if len(filtered_df['Date'].unique()) > 0 else 0
-    highest_expense = filtered_df['Amount'].max()
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric('Total Spent', f'${total_spent:.2f}')
-    col2.metric('Average Daily Spend', f'${avg_daily:.2f}')
-    col3.metric('Highest Single Expense', f'${highest_expense:.2f}')
-
-else:
-    st.info("No data available for metrics.")
-    
 
 
