@@ -5,8 +5,8 @@
 # File: expense_tracker.py
 import streamlit as st
 import pandas as pd
-#import plotly.graph_objects as go
-#import plotly.express as px
+import plotly.graph_objects as go
+import plotly.express as px
 from datetime import datetime
 
 # Set up the page
@@ -90,7 +90,7 @@ if not df.empty:
     avg_daily = total_spent / len(df['Date'].unique()) if len(df['Date'].unique()) > 0 else 0
     highest_expense = df['Amount'].max()
 
-      # Display metrics
+    # Display metrics
     col1, col2, col3 = st.columns(3)
     col1.metric("Total Spent", f"${total_spent:.2f}")
     col2.metric("Average Daily Spending", f"${avg_daily:.2f}")
