@@ -84,6 +84,12 @@ with st.sidebar:
 
 # Main content: Show and analyze expenses
 if not df.empty:
+    # Expenses by category
+    st.subheader("Expenses by Category")
+    category_total = df.groupby('Category')['Amount'].sum()
+    fig = px.bar(category_total, x=category_total.index, y=category_total.values, title="Expenses by Category")
+    st.plotly_chart(fig)
+    
     # Calculate metrics
     total_spent = df['Amount'].sum()
     avg_daily = total_spent / len(df['Date'].unique()) if len(df['Date'].unique()) > 0 else 0
@@ -96,11 +102,6 @@ if not df.empty:
     col2.metric("Average Daily Spending", f"${avg_daily:.2f}")
     col3.metric("Highest Single Expense", f"${highest_expense:.2f}")
 
-    # Expenses by category
-    st.subheader("Expenses by Category")
-    category_total = df.groupby('Category')['Amount'].sum()
-    fig = px.bar(category_total, x=category_total.index, y=category_total.values, title="Expenses by Category")
-    st.plotly_chart(fig)
 
     # Recent expenses table
     st.subheader("Recent Expenses")
