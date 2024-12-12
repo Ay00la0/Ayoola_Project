@@ -1,10 +1,13 @@
-# Project HCI 584X - Personal Budgeting and Expense Tracker
+# %pip install openpyxl
+# %pip install streamlit
+# %pip install plotly
+
+# File: expense_tracker.py
 import streamlit as st
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
+#import plotly.graph_objects as go
+#import plotly.express as px
 from datetime import datetime
-
 
 # Set up the page
 st.set_page_config(page_title="Expense Tracker", layout="wide")
@@ -81,6 +84,17 @@ with st.sidebar:
 if not df.empty:
     # Display charts and summary
     st.subheader("Expenses Summary")
+
+    # Calculate metrics
+    total_spent = df['Amount'].sum()
+    avg_daily = total_spent / len(df['Date'].unique()) if len(df['Date'].unique()) > 0 else 0
+    highest_expense = df['Amount'].max()
+
+      # Display metrics
+    col1, col2, col3 = st.columns(3)
+    col1.metric("Total Spent", f"${total_spent:.2f}")
+    col2.metric("Average Daily Spending", f"${avg_daily:.2f}")
+    col3.metric("Highest Single Expense", f"${highest_expense:.2f}")
     
     # Expenses by category
     st.subheader("Expenses by Category")
@@ -93,5 +107,3 @@ if not df.empty:
     st.dataframe(df)
 else:
     st.info("No expenses logged yet. Use the sidebar to add your first expense!")
-
-
